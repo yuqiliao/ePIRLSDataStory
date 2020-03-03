@@ -80,13 +80,16 @@ body {
 }
 
 body {
-    min-height: 1200px;
+    /*min-height: 120px;*/
     background: url(img/background-v2.png) repeat 0 0;
 }
 
 #intro,
 #outro {
-    padding: 0px 200px 0px 200px;
+    width: 50%;
+    height: auto;
+    margin: auto;
+    /*padding: 0px 200px 0px 200px;*/
 }
 
 
@@ -208,7 +211,7 @@ h4 {
 p {
     font-family: "Open Sans SemiBold";
     font-size: 16px;
-    line-height: 1.8em;
+    line-height: 30px;
 }
 
 .author{
@@ -251,12 +254,13 @@ p {
 .adMars{
     width: 100%;
     height: auto;
+    margin: auto;
 }
 
 .video{
-    width: 70%;
+    width: 100%;
     height: auto;
-    margin: 0 auto;
+    margin: auto;
     display: block;
 }
 
