@@ -25,7 +25,7 @@ function drawRangeChart(data, response) {
     /// draw most of the elements 5 times
     var moduleVars = [{"en11madz": "Mars"}, 
                       {"en11radz": "Rainforests"},
-                      {"en11badz": "Dr Blackwell"},
+                      {"en11badz": "Dr. Blackwell"},
                       {"en11zadz": "Wildebeest Migration"}, 
                       {"en11tadz": "The Legend of Troy"}];
 
@@ -54,7 +54,8 @@ function drawRangeChart(data, response) {
 
     svg.selectAll(".xLabel")
         .data([{"label": "Number of ad clicks"}])
-        .text(d => d.label);
+        .text(d => d.label)
+        .style("font-size", plotWidth/50);
 
 
     let filteredXTitle = [moduleVars[i]]
@@ -67,10 +68,10 @@ function drawRangeChart(data, response) {
         .attr("class", "xTitle")
         //.attr("transform", `translate(${margin.left + smallMultiplePadding +  smallMultipleWidth * i + 10}, ${margin.top })`)
         .attr("text-anchor", "start")
-        .attr("x", (d,i) => margin.left + smallMultiplePadding +  smallMultipleWidth * i + 10)
+        .attr("x", (d,i) => margin.left + smallMultiplePadding +  smallMultipleWidth * i )
         .attr("y", margin.top)
         .style("font-family", "sans-serif")
-        .style("font-size", 12)
+        .style("font-size", plotWidth/50)
         .style("opacity", 0)
         .text(function(d) { 
             return Object.values(d); 
@@ -87,7 +88,9 @@ function drawRangeChart(data, response) {
         .attr("transform", `translate(${margin.left}, ${margin.top})`)
         .call(d3.axisLeft(yScale)
             .tickSize(5)
-            .tickPadding(5))
+            .tickPadding(5)
+            //.tickSizeOuter(0) //this is to hide the ticks at the bottom and top
+            )
         .style("text-anchor", "end")
         .style("alignment-baseline", "middle")
         //.style("font-weight", "bold")
@@ -111,7 +114,7 @@ function drawRangeChart(data, response) {
 
     // chart title
     header.selectAll(".chartTitle")
-        .data([{"label": "Minimun and maximun number of ad-clicks by module and education system"}])
+        .data([{"label": "Minimum and maximum number of ad-clicks by module and education system"}])
         .enter()
         .append("text")
         .text(function(d) {return d.label;})
@@ -121,7 +124,8 @@ function drawRangeChart(data, response) {
         .attr("class", "chartTitle")
         .style("font-family", "sans-serif")
         .style("font-weight", "bold")
-        .style("font-size", 20)
+        .style("font-size", plotWidth/36.5) //to make the font size responsive
+        //console.log(plotWidth);
 
     // Create footer grouping
     const footer = svg.select("#footer");
